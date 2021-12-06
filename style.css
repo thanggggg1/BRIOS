@@ -1,0 +1,488 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;700&family=PT+Sans:ital,wght@0,400;0,700;1,400&family=Ubuntu:wght@300;400;500&display=swap');
+*{
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+.Bold{
+    font-weight: bold;
+}
+.Regular{
+    font-weight:lighter;
+}
+.container{
+    position: relative;
+    width: 100%;
+}
+
+.navigation{
+    position: fixed;
+    width:300px;
+    height:100%;
+    background: #EF3C5B;
+    border-left: 25px solid #EF3C5B;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.navigation.active{
+    width: 95px;
+}
+.navigation .nav-links{
+    position: absolute;
+    top: 70px;
+    left:0;
+    width: 100%; 
+    height: 100%;
+}
+/* CSS logo */
+.navigation .logo-detail{
+    height: 60px;
+    width: 100% ;
+    display:flex;
+    align-items: center;
+    padding-left: 30px;
+    transition: 0.5s;
+}
+.navigation .logo-detail.active{
+    margin-left: -50px;
+}
+.navigation .logo-detail .icon ion-icon{
+    font-size: 30px;
+    color: #fff;
+    height: 50px;
+    min-width: 78px;
+    text-align: center;
+    line-height: 50px;
+}
+.navigation .logo-detail .logo-name{
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+}
+.navigation .logo-detail .logo-name.active{
+    display: none;
+}
+
+.navigation .nav-links li{
+    position:relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px ;
+    border-bottom-left-radius: 30px ;
+}
+.navigation .nav-links li:hover,
+.navigation .nav-links li.hovered{
+    background: #fff;
+}
+.navigation .nav-links li:nth-child(1){
+    pointer-events: none;
+}
+.navigation .nav-links li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+}
+.navigation .nav-links li:nth-child(2) a{
+    margin-top: 20px;
+}
+.navigation .nav-links li:hover a,
+.navigation .nav-links li.hovered a{
+    color: #EF3C5B;
+}
+.navigation .nav-links li .icon-links{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navigation .nav-links li a .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+.navigation .nav-links li a .title{
+    position: relative;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 10px;
+    text-align: start;
+    white-space: nowrap;
+}
+.navigation .nav-links li a .icon ion-icon{
+    font-size: 1.75em ;
+    transition: all 0.3s ease;
+}
+.navigation .nav-links li a .icon ion-icon{
+    font-size: 20px;
+}
+.navigation .nav-links li.showMenu .icon-links a .arrow ion-icon{
+    transform: rotate(-180deg);
+}
+.navigation .nav-links li:hover a::before,
+.navigation .nav-links li.hovered  a::before{
+    content: '';
+    position: absolute;
+    right:0;
+    top:-50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px #fff; 
+    pointer-events: none;
+}
+.navigation .nav-links li:hover a::after,
+.navigation .nav-links li.hovered a:after{
+    content: '';
+    position: absolute;
+    right:0;
+    bottom:-50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px #fff; 
+    pointer-events: none;
+}
+.navigation .nav-links li .sub-menu{
+    padding :6px 6px 14px 60px;
+    top:-10px;
+    margin-top: -15px;
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+.navigation .nav-links li.showMenu .sub-menu{
+     display: block;
+     pointer-events: auto;
+}
+.navigation .nav-links li:hover .sub-menu{
+    top:0;
+    opacity: 1;
+    pointer-events: auto;
+}
+.navigation .nav-links li .sub-menu li{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    padding: 0 10px;
+    white-space: nowrap;
+    color: #EF3C5B;
+}
+.navigation .nav-links li .sub-menu li span{
+    font-size: 15px;
+    padding: 5px 0px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+.navigation .nav-links li .sub-menu li span:hover{
+    opacity: 1;
+    cursor: grab;  
+}
+.navigation .nav-links li .sub-menu li:nth-child(1){
+    margin-bottom: 0px;
+    pointer-events: auto;
+}
+.navigation .profile-details {
+    display: flex;
+    text-align: center;
+    padding:10px 75px;
+    transition: 0.5s;
+}
+.navigation .profile-details.active{
+    margin-left: -75px;
+}
+
+.navigation .profile-details img{
+    height:100px;
+    width: 100px;
+    object-fit:cover;
+    border-radius: 50px;
+}
+.navigation .profile-details img.active{
+    height: 50px;
+    width: 50px;
+}
+.navigation .profile-name{
+    padding: 10px 60px;
+    font-size: 20px;
+    color:#fff;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+}
+.navigation .profile-name.active{
+    display: none;
+}
+
+/* CSS main */
+.main{
+    position: absolute;
+    width: calc(100% - 300px);
+    left:300px;
+    min-height: 100vh;
+    background: white;
+    transition: 0.5s;
+}
+.main.active{
+    width: calc(100% - 95px);
+    left: 95px;
+}
+.topbar{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.topbar .users-image img{
+    position: relative;
+    height: 40px; 
+    width: 40px;
+    object-fit:cover; 
+    border-radius: 50%;
+    overflow: hidden; 
+} 
+.topbar .toggle{
+    position: relative;
+    width: 60px;
+    height:60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.0em;
+    cursor: pointer;
+}
+.cardBox{
+    position: relative;
+    width:100%;
+    padding:20px;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 30px;
+}
+.cardBox .card{
+    position: relative;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+}
+.cardBox .card div{
+    padding: 5px 0px;
+}
+.cardBox .card .logothuonghieu{
+    position: relative;
+    font-weight: 600;
+
+}
+.cardBox .card .logoBX{
+    display: flex;
+    justify-content: space-between;
+}
+.cardBox .card .logoBX img{
+    height: 86px;
+    width: 86px;
+    border-radius: 30px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+}
+.cardBox .card .logoBX4{
+    margin-left: 60px;
+}
+.cardBox .card .logoBX4 img{
+    height: 86px;
+    width: 86px;
+    border-radius: 30px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+}
+.cardBox .card .color-series{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cardBox .card .color-series .colorBX .iconBX ion-icon{
+    height: 32px;
+    width: 32px;
+}
+.cardBox .card .color-series .colorBX .iconBX.a ion-icon{
+    background:#2F2FD3;
+    color:#2F2FD3;
+    border-radius: 5px;
+}
+.cardBox .card .color-series .colorBX .iconBX.b ion-icon{
+    background: #6C77E0;
+    color: #6C77E0;
+    border-radius: 5px;
+}
+.cardBox .card .color-series .colorBX .iconBX.c ion-icon{
+    background:#ccc;
+    color:#ccc;
+    border-radius: 5px;
+}
+.cardBox .card .color-series .colorBX .iconBX.d ion-icon{
+    background: #3E424E;
+    color: #3E424E;
+        border-radius: 5px;
+}
+.cardBox .card .color-series .colorBX .iconBX.e ion-icon{
+    background: #606060;
+    color: #606060;
+        border-radius: 5px;
+}
+.cardBox .card .color-series .colorBX .iconBX.f ion-icon{
+    background: #AFB6CE; 
+    color: #AFB6CE; 
+    border-radius: 5px;
+}
+.cardBox .card:hover{
+    background: #EF3C5B;
+}
+.cardBox .card:hover .logothuonghieu,
+.cardBox .card:hover .logoBX,
+.cardBox .card:hover .brand,
+.cardBox .card:hover .brand,
+.cardBox .card:hover .color-series,
+.cardBox .card:hover .textcolorBX,
+.cardBox .card:hover .logoBX4{
+    color:white;
+}
+.collection{
+    position: relative;
+    width: 100%;
+    padding : 20px;
+}
+.collection .header{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.collection  .header .search{
+position: relative;
+margin: 0 10px;
+width: 300px;
+}
+.collection  .header .search a,.collection  .header .thuvien{
+    position: relative;
+    font-weight: 600;
+    font-size: 20px;
+    text-decoration: none;
+    color:black;
+     
+}
+.collection  .header .search label{
+position: relative;
+width: 100%;
+}
+.collection  .header .search label input{
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    outline: none;
+    border:1px solid black;
+
+}
+
+.collection .library{
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    padding:20px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    height: 800px;
+
+}
+.collection .library .left-library{
+    height: 380px;
+}
+.collection .library .right-library{
+    height: 380px;
+}
+.collection .library .product{
+    position: relative;
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+}
+.collection .library .product:hover{
+   background: #EF3C5B;
+}
+.collection .library .product img{
+    width: 300px;
+    height: 288px;
+    margin-bottom: 10px;
+}
+.collection .library .product .text{
+    position: relative;
+    line-height: 15px;
+    padding : 5px 0px;
+}
+.collection .library .clGH{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.collection .library .clGH img{
+    width: 180px;
+    height: 180px;
+}
+.collection .library .rowABC{
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+    grid-gap: 20px;
+}
+.collection .library .rowBI{
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+    grid-gap: 20px;
+}
+.collection .library .rowBI .i .product img{
+    height: 175px;
+    width: 776px;
+}
+.collection .library .clBCEFD{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+}
+.collection .library .clBCEFD .CEFD{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+
+}
+.collection .library .clBCEFD .CD{
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    grid-gap: 10px;
+
+}
+.collection .library .clBCEFD .CD img{
+    width: 190px;
+    height: 99px;
+}
+
+/* .collection .library .left-library .product .pic1 img{
+} */
+
+
