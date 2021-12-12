@@ -24,25 +24,24 @@
                         <span class="profile-name">Super Tech</span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" class="tabs-button" data-for-tab="1">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Trang chủ</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" class="tabs-button" data-for-tab="2">
                         <span class="icon"><ion-icon name="folder-open-outline"></ion-icon></span>
                         <span class="title">Profile thương hiệu</span>
                     </a>
                 </li>
                 <li>
-                    <div class="icon-links">
-                    <a href="#">
+                    <a href="#" class="icon-links tabs-button" data-for-tab="3">
                         <span class="icon"><ion-icon name="library-outline"></ion-icon></span>
                         <span class="title">Thư viện</span>
                         <span class="icon arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>
                     </a>
-                    </div>
+                    
                     <ul class="sub-menu">
                         <li><span>Banner quảng cáo</span></li>
                         <li><span>Sản phẩm in ấn</span></li>
@@ -50,19 +49,19 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" class="tabs-button" data-for-tab="4">
                         <span class="icon"><ion-icon name="share-social-outline"></ion-icon></span>
                         <span class="title">Kết nối Freelancer</span>
                     </a>
                 </li> 
                 <li>
-                    <a href="#">
+                    <a href="#" class="tabs-button" data-for-tab="5">
                         <span class="icon"><ion-icon name="desktop-outline"></ion-icon></span>
                         <span class="title">Tự thiết kế</span>
                     </a>
                 </li> 
                 <li>
-                    <a href="#">
+                    <a href="#" class="tabs-button" data-for-tab="6">
                         <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
                         <span class="title">Lịch xuất bản</span>
                     </a>
@@ -70,18 +69,54 @@
             </ul>
         </div>
 
-        <!-- main -->
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-                <div class="users-image ">
-                    <img src="./asset/img/user.jpeg" alt="">
-                </div> 
-
+        <!-- Top bar -->
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <!-- <div class="users-image ">
+                <img src="./asset/img/user.jpeg" alt="">
+            </div>  -->
+            <div class="MenuIndicator">
+                <ul>
+                    <li class="list">
+                        <a href="">
+                            <span class="icon">
+                                <ion-icon name="person-outline"></ion-icon>
+                            </span>
+                           
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="">
+                            <span class="icon">
+                                <ion-icon name="notifications-outline"></ion-icon>
+                            </span>
+                           
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="">
+                            <span class="icon">
+                                <ion-icon name="chatbubbles-outline"></ion-icon>
+                            </span>
+                            
+                        </a>
+                    </li><li class="list">
+                        <a href="">
+                            <span class="icon">
+                                <ion-icon name="settings-outline"></ion-icon>
+                            </span>
+                          
+                        </a>
+                    </li>
+                </ul>
             </div>
 
+
+        </div>
+        <!-- PROFILE USER-->
+        <div class=" profile-user tabs-content tabs-content-active" data-tab="2">
             <!-- cards -->
             <div class="cardBox">
                 <div class="card">
@@ -149,7 +184,7 @@
                 </div>
             </div>
             </div>
-            <!-- Library -->
+            <!-- Collection -->
             <div class="collection">
                 <div class="header">
                         <div class="thuvien">
@@ -299,6 +334,12 @@
 
         </div>
 
+        <!--Thư viện -->
+        <div class="library tabs-content" data-tab="3">
+            <h1>Thu vien</h1>
+        </div>
+
+
 
     </div>
    
@@ -309,12 +350,13 @@
     //  Menu Toggle
     let toggle = document.querySelector('.toggle');
     let navigation = document.querySelector('.navigation');
-    let main = document.querySelector('.main');
+    let main = document.querySelector('.profile-user');
     let logodetail=document.querySelector('.logo-detail')
     let profiledetails=document.querySelector('.profile-details')
     let logoname = document.querySelector('.logo-name');
     let profilename = document.querySelector('.profile-name');
     let img=document.querySelector('.profile-details img')
+    let topbar=document.querySelector('.topbar');
 
     toggle.onclick =function(){
         navigation.classList.toggle('active');
@@ -324,9 +366,10 @@
         profilename.classList.toggle('active')
         logoname.classList.toggle('active')
         main.classList.toggle('active')
+        topbar.classList.toggle('active')
     }
 
-
+// Navigation 
     let list =document.querySelectorAll('.navigation li');
     function activeLink(){
         list.forEach((item) =>
@@ -339,11 +382,33 @@
     let arrow=document.querySelectorAll(".arrow");
     for(var i=0;i<arrow.length;i++){
         arrow[i].addEventListener("click",(e)=>{
-            let arrowParent=e.target.parentElement.parentElement.parentElement.parentElement;
+            let arrowParent=e.target.parentElement.parentElement.parentElement;
             console.log(arrowParent);
             arrowParent.classList.toggle("showMenu");
         });
         }
+
+
+        // SET UP TABS
+        function setupTabs (){
+            document.querySelectorAll(".navigation .tabs-button").forEach(button =>{
+                button.addEventListener("click",()=>{
+                    const navigation=button.parentElement.parentElement.parentElement;
+                    const container=navigation.parentElement;
+                    const tabNumber=button.dataset.forTab;
+                    const tabtoactive = container.querySelector(`.tabs-content[data-tab="${tabNumber}"]`);
+                    container.querySelectorAll(".tabs-content").forEach(tab =>{
+                        tab.classList.remove("tabs-content-active")
+                    })
+                    tabtoactive.classList.add("tabs-content-active");
+                })
+            })
+        }
+        document.addEventListener("DOMContentLoaded",()=>{
+            setupTabs();
+        });
+        
+
 </script> 
 
 </body>

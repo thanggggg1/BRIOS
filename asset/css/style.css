@@ -97,11 +97,11 @@ body{
 .navigation .nav-links li.hovered a{
     color: #EF3C5B;
 }
-.navigation .nav-links li .icon-links{
+/* .navigation .nav-links li a.icon-links{
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
+} */
 .navigation .nav-links li a .icon{
     position: relative;
     display: block;
@@ -126,7 +126,7 @@ body{
 .navigation .nav-links li a .icon ion-icon{
     font-size: 20px;
 }
-.navigation .nav-links li.showMenu .icon-links a .arrow ion-icon{
+.navigation .nav-links li.showMenu a.icon-links .arrow ion-icon{
     transform: rotate(-180deg);
 }
 .navigation .nav-links li:hover a::before,
@@ -227,9 +227,15 @@ body{
 .navigation .profile-name.active{
     display: none;
 }
+.container .tabs-content{
+    display: none;
+}
+.container .tabs-content-active{
+    display: block;
+}
 
 /* CSS main */
-.main{
+.profile-user{
     position: absolute;
     width: calc(100% - 300px);
     left:300px;
@@ -237,17 +243,25 @@ body{
     background: white;
     transition: 0.5s;
 }
-.main.active{
+.profile-user.active{
     width: calc(100% - 95px);
     left: 95px;
 }
 .topbar{
-    width: 100%;
+    position: relative;
+    width: calc(100% - 300px);
+    left:300px;
+    background: white;
+    transition: 0.5s;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
+}
+.topbar.active{
+    width: calc(100% - 95px);
+    left: 95px;
 }
 .topbar .users-image img{
     position: relative;
@@ -266,6 +280,57 @@ body{
     align-items: center;
     font-size: 2.0em;
     cursor: pointer;
+}
+.topbar .MenuIndicator{
+    position: relative;
+    width: 280px;
+    height:60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.topbar .MenuIndicator ul{
+    display: flex ;
+    width: 350px;
+}
+.topbar .MenuIndicator ul li{
+    position: relative;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+    z-index: 1;
+}
+.topbar .MenuIndicator ul li a{
+    position: relative;
+    display :flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+.topbar .MenuIndicator ul li.list a{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 9px;
+    background: #FFFFFF;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 49px;
+}
+.topbar .MenuIndicator ul li a .icon{
+position: relative;
+display: block;
+line-height: 75px;
+font-size: 1.5em;
+text-align: center;
+transition: 0.5s;
+color: black;
+}
+.topbar .MenuIndicator ul li:hover .icon{
+    transform: translateY(-15px);
 }
 .cardBox{
     position: relative;

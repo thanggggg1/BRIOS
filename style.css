@@ -249,6 +249,17 @@ body{
     justify-content: space-between;
     padding: 0 10px;
 }
+.topbar .MenuIndicator{
+    position: relative;
+    width: 400px;
+    height:60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.topbar .MenuIndicator ul{
+    display: flex;
+}
 .topbar .users-image img{
     position: relative;
     height: 40px; 
